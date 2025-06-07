@@ -1,0 +1,34 @@
+# Backend Dockerfile
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install ffmpeg for audio processing
+RUN apk add --no-cache ffmpeg
+
+# Copy package files
+COPY package*.json ./
+COPY apps/api/package*.json ./apps/api/
+
+# Install dependencies
+RUN npm ci --only=production
+
+# Copy source code
+COPY apps/api ./apps/api
+
+# Build the application
+WORKDIR /app/apps/api
+RUN npm run build
+
+# Create uploads and processed directories
+RUN mkdir -p uploads processed
+
+# Expose port
+EXPOSE 8000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:8000/health || exit 1
+
+# Start the application
+CMD ["npm", "start"]
