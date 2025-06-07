@@ -1,0 +1,28 @@
+{
+  "name": "ltb-audio-platform",
+  "version": "1.0.0",
+  "description": "Complete Superior Music Production Platform - LTB Audio",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=web",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "lint": "npm run lint --workspaces",
+    "type-check": "npm run type-check --workspaces",
+    "clean": "rm -rf node_modules && npm run clean --workspaces"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}

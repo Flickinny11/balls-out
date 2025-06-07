@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20;
+  }
+  
+  .glass-dark {
+    @apply bg-black/10 backdrop-blur-lg border border-white/10;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-primary-600 to-accent-600 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 glass text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105;
+  }
+  
+  .card {
+    @apply glass rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300;
+  }
+  
+  .waveform-container {
+    @apply relative overflow-hidden rounded-lg bg-gradient-to-r from-slate-900/50 to-slate-800/50;
+  }
+  
+  .track-item {
+    @apply flex items-center p-4 glass rounded-lg hover:bg-white/20 transition-all duration-200 cursor-pointer;
+  }
+  
+  .mixer-channel {
+    @apply flex flex-col bg-gradient-to-b from-slate-800 to-slate-900 rounded-lg p-4 min-w-[80px] shadow-lg;
+  }
+  
+  .fader {
+    @apply relative w-6 h-40 bg-slate-700 rounded-full overflow-hidden cursor-pointer;
+  }
+  
+  .knob {
+    @apply relative w-16 h-16 bg-gradient-to-br from-slate-700 to-slate-800 rounded-full border-2 border-slate-600 cursor-pointer shadow-lg;
+  }
+}
