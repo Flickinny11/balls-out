@@ -28,10 +28,10 @@ export class AudioService {
       await writeFile(filePath, file.buffer);
 
       // Analyze audio file
-      const audioData = await this.analyzeAudioFile(filePath);
+      const audioData = await this.analyzeAudioFile(filePath) as any;
 
       // Generate waveform
-      const waveformData = await this.generateWaveform(filePath);
+      const waveformData = await this.generateWaveform(filePath) as any;
 
       // In production, upload to cloud storage (AWS S3, etc.)
       const fileUrl = `${process.env.API_URL}/uploads/${fileName}`;
@@ -87,7 +87,7 @@ export class AudioService {
   async generateWaveform(audioPath: string, resolution: number = 1000) {
     try {
       // Use FFmpeg to generate waveform data
-      const waveformData = await this.extractAudioPeaks(audioPath, resolution);
+      const waveformData = await this.extractAudioPeaks(audioPath, resolution) as any;
       
       return {
         peaks: waveformData.peaks,
